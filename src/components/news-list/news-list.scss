@@ -1,0 +1,39 @@
+news-list {
+    .list-box{
+        .item{
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+            padding: 8px 0;
+            display: flex;
+            .right{
+                display: inline-block;
+                vertical-align: middle;
+                flex: 1;
+                padding-right: 10px;
+                h2{
+                    font-size: 16px;
+                    color: #666;
+                    line-height: 24px;
+                    height: 48px;
+                }
+                p{
+                    font-size: 12px;
+                    color: #999;
+                    margin: 0;
+                    .end{
+                        float: right;
+                    }
+                }
+            }
+            .left{
+                display: inline-block;
+                vertical-align: middle;
+                img{
+                    width: 100px;
+                    height: 70px;
+                    background: #d9d9d9;
+                }
+            }
+        }
+    }
+}

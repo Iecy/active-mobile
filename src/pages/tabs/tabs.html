@@ -1,5 +1,26 @@
-<ion-tabs>
+<ion-menu side="left" [content]="userInfo">
+  <ion-content>
+    <div class="user-face-box">
+      <div class="user-face">
+        <div class="img-box">
+           头像
+        </div>
+      </div>
+      <h2>点击登陆</h2>
+      <p>登陆后可享受更多服务</p>
+    </div>
+    <ion-list>
+      <ul class="user-menu">
+        <li>币种指数</li>
+        <li>涨幅分布</li>
+        <li>涨幅榜</li>
+      </ul>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-tabs #userInfo>
   <ion-tab [root]="tab1Root" [tabTitle]="tab1Title" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" tabIcon="search"></ion-tab>
-  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="cog"></ion-tab>
+  <ion-tab [root]="tab2Root" [tabTitle]="tab2Title" tabIcon="planet"></ion-tab>
+  <ion-tab [root]="tab3Root" [tabTitle]="tab3Title" tabIcon="person"></ion-tab>
 </ion-tabs>

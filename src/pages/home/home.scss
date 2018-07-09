@@ -1,3 +1,17 @@
-page-home {
-
+.segment-ios .segment-button{
+    flex: none;
+    width: 65px;
+}
+ion-content{
+    .scroll-content{
+        display: flex;
+        overflow: hidden;
+        flex-direction: column;
+        scroll-bar{
+            height: 44px;
+        }
+        .tables-box{
+            flex: 1;
+        }
+    }
 }

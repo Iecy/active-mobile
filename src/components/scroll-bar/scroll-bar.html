@@ -1,0 +1,10 @@
+<ion-toolbar>
+  <div class="swpper-bar-box">
+    <div class="swpper-bar">
+      <span *ngFor="let item of list; let i = index;" (click)="itemChageFn(item, i)" [class.active]="i === thisActive">{{item.name}}</span>
+    </div>
+  </div>
+  <div class="right-add" (click)="addClick.emit()" >
+    <ion-icon name="add"></ion-icon>
+  </div>
+</ion-toolbar>

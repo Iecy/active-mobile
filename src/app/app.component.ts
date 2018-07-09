@@ -4,13 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
 
-import { FirstRunPage, MainPage } from '../pages';
+import { MainPage } from '../pages';
 import { Settings } from '../providers';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp implements OnInit {
-  rootPage: any;
+  rootPage: any = MainPage;
 
   @ViewChild(Nav) nav: Nav;
 
@@ -32,12 +32,13 @@ export class MyApp implements OnInit {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      if (!localStorage.getItem('isFirst')) {
-        this.rootPage = FirstRunPage;
-        localStorage.setItem('isFirst', '1');
-      } else {
-        this.rootPage = MainPage;
-      }
+      // 判断引导页的显示
+      // if (!localStorage.getItem('isFirst')) {
+      //   this.rootPage = FirstRunPage;
+      //   localStorage.setItem('isFirst', '1');
+      // } else {
+      //   this.rootPage = MainPage;
+      // }
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });

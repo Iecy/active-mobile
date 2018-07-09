@@ -1,18 +1,40 @@
-<!--
-  Generated template for the HomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar color="primary">
+      <ion-segment [(ngModel)]="tabs" (ionChange)="tabChange($event)" color="light">
+        <ion-segment-button value="one">
+          币种
+        </ion-segment-button>
+        <ion-segment-button value="two">
+          交易所
+        </ion-segment-button>
+        <ion-segment-button value="three">
+          交易对
+        </ion-segment-button>
+      </ion-segment>
+      <!-- <ion-buttons end>
+        <button ion-button icon-only (click)="showSharch()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons> -->
   </ion-navbar>
-
 </ion-header>
-
-
-<ion-content padding>
-
+<ion-content>
+  <scroll-bar
+    [list]="barlist"
+    (addClick)="BarAdd()"
+    (itemChange)="BarChange($event)"
+  ></scroll-bar>
+  <div class="tables-box" [ngSwitch]="tabs">
+    <div *ngSwitchCase="'one'">
+      <cont-list
+        [DataList]="listData"
+      ></cont-list>
+    </div>
+    <div *ngSwitchCase="'two'">
+      <cont-list [DataList]="listData"></cont-list>
+    </div>
+    <div *ngSwitchCase="'three'">
+      <cont-list [DataList]="listData"></cont-list>
+    </div>
+  </div>
 </ion-content>

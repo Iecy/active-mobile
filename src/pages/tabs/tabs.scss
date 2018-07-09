@@ -1,3 +1,39 @@
-page-tabs {
-
+ion-menu div.scroll-content{
+    background: #1584dd;
+    padding: 15px;
+    .user-face-box{
+        height: 200px;
+        text-align: center;
+        border-bottom: 1px solid #0871cc;
+        .user-face{
+            margin-top: 30px;
+            .img-box{
+                display: inline-block;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                background: #d9d9d9;
+                overflow: hidden;
+            }
+        }
+        h2{
+            color: #fff;
+            font-size: 18px;
+            margin: 15px 0;
+        }
+        p{
+            color: #4dceff;
+            font-size: 16px;
+            margin: 15px 0;
+        }
+    }
+    .user-menu{
+        padding: 15px 0;
+        li{
+            list-style: none;
+            color: #fff;
+            margin: 15px;
+            font-size: 18px;
+        }
+    }
 }

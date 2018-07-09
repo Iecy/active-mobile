@@ -1,0 +1,71 @@
+cont-list {
+    .list-box{
+        padding: 0 8px;
+    }
+    table{
+        width: 100%;
+        padding: 0 8px;
+        thead{
+            th{
+                font-size: 14px;
+                line-height: 24px;
+                font-weight: normal;
+                ion-icon[name=arrow-round-down]{
+                    font-size: 20px;
+                    line-height: 24px;
+                    padding: 0 3px;
+                    position: relative;
+                    top: 2px;
+                }
+                text-align: right;
+                &:first-child{
+                    text-align: left;
+                }
+            }
+            border-bottom: 1px solid #d9d9d9;
+        }
+        tbody{
+            tr{
+                td{
+                    padding: 8px 0;
+                    .icon{
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    .title{
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                    text-align: right;
+                    &:first-child{
+                        text-align: left;
+                    }
+                    .up{
+                        margin: 0;
+                        font-size: 16px;
+                        b{
+                            &.color-green{
+                                color: green;
+                            }
+                            &.color-red{
+                                color: red;
+                            }
+                        }
+                        span{
+                            font-size: 12px;
+                            color: #999;
+                            margin-left: 5px;
+                        }
+                    }
+                    .down{
+                        margin: 0;
+                        span{
+                            color: #999;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

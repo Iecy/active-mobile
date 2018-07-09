@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-segment [(ngModel)]="tabs" color="light">
+      <ion-segment-button value="one">
+        新闻
+      </ion-segment-button>
+      <ion-segment-button value="two">
+        快讯
+      </ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="tables-box" [ngSwitch]="tabs">
+    <div *ngSwitchCase="'one'">
+      <news-list [DataList]="listData"></news-list>
+    </div>
+    <div *ngSwitchCase="'two'">
+      <information-list [DataList]="listData"></information-list>
+    </div>
+  </div>
+</ion-content>

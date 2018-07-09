@@ -1,0 +1,33 @@
+ion-toolbar{
+    .swpper-bar-box{
+        overflow-y: hidden;
+        overflow-x: auto;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        .swpper-bar{
+            display: inline-block;
+            padding: 5px;
+            white-space: nowrap;
+            padding-right: 50px;
+            span{
+                display: inline-block;
+                margin: 0 8px;
+                &.active{
+                    color: #488aff;
+                }
+            }
+        }
+    }
+    .right-add{
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 44px;
+        text-align: center;
+        line-height: 44px;
+        background: #f8f8f8;
+        font-size: 20px;
+    }
+}
