@@ -12,11 +12,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ContListComponent implements OnInit {
   @Input() DataList: Array<any>;
-
+  @Input() Theader: Array<any>;
   constructor() {
   }
 
   ngOnInit() {
-
+    console.log(this.Theader);
   }
 }

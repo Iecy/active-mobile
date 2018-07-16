@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://example.com/api/v1';
+  url: string = 'http://coinfor.io/fast_server/api';
+  imgiconUrl: string = 'http://www.coinfor.io/pic/coin';
+  imgmarketUrl: string = 'http://www.coinfor.io/pic/market';
 
   constructor(public http: HttpClient) {
   }
@@ -43,5 +45,18 @@ export class Api {
 
   patch(endpoint: string, body: any, reqOpts?: any) {
     return this.http.patch(this.url + '/' + endpoint, body, reqOpts);
+  }
+
+  // 具体接口
+  // 首页币种行情列表
+  HomeMarketList(params?: any) {
+    return this.post('currencies_list.do', params);
+  }
+
+/**
+ * HomeExchangeList 获取交易所行情接口
+ */
+  public HomeExchangeList(params?: any) {
+    return this.post('exchange_list.do', params);
   }
 }

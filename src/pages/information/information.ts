@@ -15,13 +15,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InformationPage {
   public tabs: string = 'one';
-  public listData: Array<any>;
+  public listNewsData: Array<any>;
+  public listInformationData: Array<any>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.listData = [];
+    this.listNewsData = [];
+    this.listInformationData = [];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InformationPage');
   }
 
+  newsClick(data: any) {
+    console.log(data);
+    this.navCtrl.push('NewContPage');
+  }
+
+  informationClick(data: any) {
+    console.log(data);
+    this.navCtrl.push('InformationContPage');
+  }
 }

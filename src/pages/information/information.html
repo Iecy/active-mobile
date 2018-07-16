@@ -15,12 +15,12 @@
 
 
 <ion-content padding>
-  <div class="tables-box" [ngSwitch]="tabs">
+  <div class="informa-box" [ngSwitch]="tabs">
     <div *ngSwitchCase="'one'">
-      <news-list [DataList]="listData"></news-list>
+      <news-list (itemClick)="newsClick($event)" [DataList]="listNewsData"></news-list>
     </div>
     <div *ngSwitchCase="'two'">
-      <information-list [DataList]="listData"></information-list>
+      <information-list [DataList]="listInformationData"></information-list>
     </div>
   </div>
 </ion-content>

@@ -4,14 +4,20 @@
 }
 ion-content{
     .scroll-content{
-        display: flex;
-        overflow: hidden;
-        flex-direction: column;
+        // display: flex;
+        // overflow: hidden;
+        // flex-direction: column;
         scroll-bar{
             height: 44px;
         }
         .tables-box{
-            flex: 1;
+            position: absolute;
+            top: 44px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
     }
 }

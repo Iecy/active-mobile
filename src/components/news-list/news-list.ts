@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 /**
  * Generated class for the NewsListComponent component.
@@ -12,6 +12,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NewsListComponent implements OnInit {
   @Input() DataList: Array<any>;
+  @Output() itemClick = new EventEmitter();
 
   constructor() {
   }

@@ -1,7 +1,9 @@
 news-list {
     .list-box{
         .item{
-            border-top: 1px solid #999;
+            &:first-child{
+                border-top: 1px solid #999;
+            }
             border-bottom: 1px solid #999;
             padding: 8px 0;
             display: flex;

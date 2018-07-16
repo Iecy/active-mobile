@@ -20,21 +20,22 @@
 </ion-header>
 <ion-content>
   <scroll-bar
-    [list]="barlist"
+    [list]="barlist[tabs]"
     (addClick)="BarAdd()"
     (itemChange)="BarChange($event)"
   ></scroll-bar>
   <div class="tables-box" [ngSwitch]="tabs">
     <div *ngSwitchCase="'one'">
       <cont-list
-        [DataList]="listData"
+        [DataList]="listDataMarket"
+        [Theader]="barlist[tabs][barIndex].theader"
       ></cont-list>
     </div>
     <div *ngSwitchCase="'two'">
-      <cont-list [DataList]="listData"></cont-list>
+      <cont-list [DataList]="listDataExchange" [Theader]="barlist[tabs][barIndex].theader"></cont-list>
     </div>
     <div *ngSwitchCase="'three'">
-      <cont-list [DataList]="listData"></cont-list>
+      <cont-list [DataList]="listDataTrading" [Theader]="barlist[tabs][barIndex].theader"></cont-list>
     </div>
   </div>
 </ion-content>

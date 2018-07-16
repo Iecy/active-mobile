@@ -1,57 +1,66 @@
 <!-- Generated template for the ContListComponent component -->
 <div class="list-box">
-  <table>
+  <div class="table-header">
+    <div class="th-header" *ngFor="let titem of Theader;">
+      <ion-icon name="search" *ngIf="titem.type === 'search'"></ion-icon>
+      <span>{{titem.name}}</span>
+      <ion-icon name="arrow-round-down" *ngIf="titem.type === 'sort'"></ion-icon>
+    </div>
+  </div>
+  <div *ngIf="!DataList.length" class="nodata">
+    <p>暂无数据</p>
+  </div>
+  <table *ngIf="DataList.length" >
     <thead>
       <tr>
         <th>
-          <ion-icon name="search"></ion-icon>
-          <span>名称(2299个)</span>
+          <span>名称/市值</span>
         </th>
         <th>
-          <span>全球指数(¥)<ion-icon name="arrow-round-down"></ion-icon></span>
+          <span>价格/涨幅</span>
         </th>
         <th>
-          <span>流通市值<ion-icon name="arrow-round-down"></ion-icon></span>
+          <span>流通/成交额</span>
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr *ngFor="let data of DataList; let i = index;">
         <td>
           <div class="icon">
             <p class="up">
-              <ion-icon name="at"></ion-icon>
+              <img [src]="data.iconImg" [alt]="data.name">
             </p>
             <p class="down">
-              <span>01</span>
+              <span>{{i}}</span>
             </p>
           </div>
           <div class="title">
             <p class="up">
-              <b>BTC</b><span>比特币</span>
+              <b>{{data.fupbname}}</b><span>{{data.name}}</span>
             </p>
             <p class="down">
-              <span>发行总量:2100万</span>
-            </p>
-          </div>
-        </td>
-        <td>
-          <div class="title">
-            <p class="up">
-              <b class="color-green">44289.35</b>
-            </p>
-            <p class="down">
-              <span>-1.22%</span>
+              <span>{{data.fdpdname}}</span>
             </p>
           </div>
         </td>
         <td>
           <div class="title">
             <p class="up">
-              <b class="color-red">7559亿</b>
+              <b [class]="data.isnegative ? 'color-red' : 'color-green'">{{data.supbname}}</b>
             </p>
             <p class="down">
-              <span>-93.51亿</span>
+              <span>{{data.sdpsname}}</span>
+            </p>
+          </div>
+        </td>
+        <td>
+          <div class="title">
+            <p class="up">
+              <b class="color-green">{{data.tupbname}}</b>
+            </p>
+            <p class="down">
+              <span>{{data.tdpsname}}</span>
             </p>
           </div>
         </td>

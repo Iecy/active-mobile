@@ -29,6 +29,7 @@ export class ScrollBarComponent implements OnInit {
 
   public itemChageFn(item, index) {
     this.thisActive = index;
+    item.index = index;
     this.itemChange.emit(item);
   }
 }
