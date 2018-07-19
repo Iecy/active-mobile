@@ -15,9 +15,10 @@ export class MyApp implements OnInit {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
+    { title: 'Home', component: 'HomePage' },
     { title: 'Tutorial', component: 'TutorialPage' },
     { title: 'Welcome', component: 'WelcomePage' },
-    { title: 'Tabs', component: 'TabsPage' },
+    // { title: 'Tabs', component: 'TabsPage' },
     { title: 'Cards', component: 'CardsPage' },
     { title: 'Content', component: 'ContentPage' },
     { title: 'Login', component: 'LoginPage' },
@@ -26,9 +27,16 @@ export class MyApp implements OnInit {
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
     { title: 'Search', component: 'SearchPage' }
-  ]
+  ];
 
-  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
+  constructor(
+    private translate: TranslateService,
+    platform: Platform,
+    settings: Settings,
+    private config: Config,
+    private statusBar: StatusBar,
+    private splashScreen: SplashScreen
+  ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -50,9 +58,9 @@ export class MyApp implements OnInit {
 
   initTranslate() {
     // Set the default language for translation strings, and the current language.
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('zh-cmn-Hans');
     const browserLang = this.translate.getBrowserLang();
-
+    
     if (browserLang) {
       if (browserLang === 'zh') {
         const browserCultureLang = this.translate.getBrowserCultureLang();

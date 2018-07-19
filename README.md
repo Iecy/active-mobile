@@ -36,3 +36,9 @@ https://ionicframework.com/docs/intro/deploying/
 
 cli命令
 https://ionicframework.com/docs/cli/commands.html
+
+platform命令：
+> cordova 帮助命令 `ionic cordova platform --help`
+> 添加ios `ionic cordova platform add ios`
+> 删除ios `ionic cordova platform rm ios`
+> 添加android `ionic cordova platform add android`

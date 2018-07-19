@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 /**
  * Generated class for the ScrollBarComponent component.
@@ -10,7 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   selector: 'scroll-bar',
   templateUrl: 'scroll-bar.html'
 })
-export class ScrollBarComponent implements OnInit {
+export class ScrollBarComponent implements OnInit, OnChanges {
   @Input() list: Array<any>;
   @Output() addClick = new EventEmitter();
   @Output() itemChange = new EventEmitter();
@@ -18,13 +18,15 @@ export class ScrollBarComponent implements OnInit {
   thisActive: number;
 
   constructor() {
-    console.log('Hello ScrollBarComponent Component');
     this.text = 'Hello World';
     this.thisActive = 0;
   }
 
   ngOnInit() {
+  }
 
+  ngOnChanges() {
+    this.thisActive = 0;
   }
 
   public itemChageFn(item, index) {

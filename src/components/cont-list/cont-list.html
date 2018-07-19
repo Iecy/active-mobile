@@ -2,69 +2,71 @@
 <div class="list-box">
   <div class="table-header">
     <div class="th-header" *ngFor="let titem of Theader;">
-      <ion-icon name="search" *ngIf="titem.type === 'search'"></ion-icon>
+      <!-- <ion-icon name="search" *ngIf="titem.type === 'search'"></ion-icon> -->
       <span>{{titem.name}}</span>
-      <ion-icon name="arrow-round-down" *ngIf="titem.type === 'sort'"></ion-icon>
+      <!-- <ion-icon name="arrow-round-down" *ngIf="titem.type === 'sort'"></ion-icon> -->
     </div>
   </div>
   <div *ngIf="!DataList.length" class="nodata">
     <p>暂无数据</p>
   </div>
-  <table *ngIf="DataList.length" >
-    <thead>
-      <tr>
-        <th>
-          <span>名称/市值</span>
-        </th>
-        <th>
-          <span>价格/涨幅</span>
-        </th>
-        <th>
-          <span>流通/成交额</span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of DataList; let i = index;">
-        <td>
-          <div class="icon">
-            <p class="up">
-              <img [src]="data.iconImg" [alt]="data.name">
-            </p>
-            <p class="down">
-              <span>{{i}}</span>
-            </p>
-          </div>
-          <div class="title">
-            <p class="up">
-              <b>{{data.fupbname}}</b><span>{{data.name}}</span>
-            </p>
-            <p class="down">
-              <span>{{data.fdpdname}}</span>
-            </p>
-          </div>
-        </td>
-        <td>
-          <div class="title">
-            <p class="up">
-              <b [class]="data.isnegative ? 'color-red' : 'color-green'">{{data.supbname}}</b>
-            </p>
-            <p class="down">
-              <span>{{data.sdpsname}}</span>
-            </p>
-          </div>
-        </td>
-        <td>
-          <div class="title">
-            <p class="up">
-              <b class="color-green">{{data.tupbname}}</b>
-            </p>
-            <p class="down">
-              <span>{{data.tdpsname}}</span>
-            </p>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-content">
+    <table *ngIf="DataList.length" >
+      <thead>
+        <tr>
+          <th>
+            <span>名称/市值</span>
+          </th>
+          <th>
+            <span>价格/涨幅</span>
+          </th>
+          <th>
+            <span>流通/成交额</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of DataList; let i = index;">
+          <td>
+            <div class="icon">
+              <p class="up">
+                <img [src]="data.iconImg" onerror="this.src='/assets/images/icon-c1.png';" [alt]="data.name">
+              </p>
+              <p class="down">
+                <span>{{i}}</span>
+              </p>
+            </div>
+            <div class="title">
+              <p class="up">
+                <b>{{data.fupbname}}</b><span>{{data.name}}</span>
+              </p>
+              <p class="down">
+                <span>{{data.fdpdname}}</span>
+              </p>
+            </div>
+          </td>
+          <td>
+            <div class="title">
+              <p class="up">
+                <b [class]="data.isnegative ? 'color-red' : 'color-green'">{{data.supbname}}</b>
+              </p>
+              <p class="down">
+                <span>{{data.sdpsname}}</span>
+              </p>
+            </div>
+          </td>
+          <td>
+            <div class="title">
+              <p class="up">
+                <b class="color-green">{{data.tupbname}}</b>
+              </p>
+              <p class="down">
+                <span>{{data.tdpsname}}</span>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

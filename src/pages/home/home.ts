@@ -111,7 +111,6 @@ export class HomePage implements OnInit {
   
   tabChange(e) {
     this.barlist[this.tabs][0].index = 0;
-    console.log(this.barlist[this.tabs][0]);
     this.BarChange(this.barlist[this.tabs][0]);
   }
 
@@ -138,7 +137,7 @@ export class HomePage implements OnInit {
     this.api.HomeMarketList().subscribe((result: any) => {
       console.log(result);
       if (result.success) {
-        result.data.forEach(item => {
+        const data = result.data.filter((f, index) => index <= 10).map(item => {
           item.iconImg = this.api.imgiconUrl + '/' + item.coin.toLowerCase().split(' ').join('') + '.png';
           item.isnegative = item.change24 < 0;
           for (const i in item) {
@@ -152,9 +151,10 @@ export class HomePage implements OnInit {
           item.supbname = '$' + item.price;
           item.sdpsname = item.change24 + '%';
           item.tupbname = item.circulatingSupply;
-          item.tdpsname = '$' + item.volume
+          item.tdpsname = '$' + item.volume;
+          return item;
         });
-        this.listDataMarket = result.data;
+        this.listDataMarket = data;
         updataloading.dismiss();
       }
     });
@@ -163,7 +163,6 @@ export class HomePage implements OnInit {
    * gettage 换取标签
    */
   public gettage(data: string): string {
-    console.log(1);
     if (!data) {
       return '--';
     }
@@ -194,7 +193,6 @@ export class HomePage implements OnInit {
     });
     updataloading.present();
     this.api.HomeExchangeList().subscribe((result: any) => {
-      console.log(result);
       if (result.success) {
         result.data.forEach(item => {
           item.iconImg = this.api.imgmarketUrl + '/' + item.market.toLowerCase().split(' ').join('') + '.png';

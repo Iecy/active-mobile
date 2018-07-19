@@ -1,0 +1,69 @@
+<!-- Generated template for the CurrencyListComponent component -->
+<div class="list-box">
+  <div class="table-header list-row">
+    <div class="th-header td" *ngFor="let titem of Theader;">
+      <span>{{titem.name}}</span>
+    </div>
+  </div>
+  <div *ngIf="!DataList.length" class="nodata">
+    <p>暂无数据</p>
+  </div>
+  <div class="table-content">
+    <ion-list class="table-conent">
+      <ion-item-sliding *ngFor="let data of DataList; let i = index;">
+        <ion-item>
+          <div class="list-row">
+            <div class="td">
+              <div class="icon">
+                <p class="up">
+                  <img [src]="data.iconImg" onerror="this.src='/assets/images/icon-c1.png';" [alt]="data.name">
+                </p>
+                <p class="down">
+                  <span>{{i}}</span>
+                </p>
+              </div>
+              <div class="title">
+                <p class="up">
+                  <b>{{data.fupbname}}</b><span>{{data.name}}</span>
+                </p>
+                <p class="down">
+                  <span>{{data.fdpdname}}</span>
+                </p>
+              </div>
+            </div>
+            <div class="td">
+              <div class="title">
+                <p class="up">
+                  <b [class]="data.isnegative ? 'color-red' : 'color-green'">{{data.supbname}}</b>
+                </p>
+                <p class="down">
+                  <span>{{data.sdpsname}}</span>
+                </p>
+              </div>
+            </div>
+            <div class="td">
+              <div class="title">
+                <p class="up">
+                  <b class="color-green">{{data.tupbname}}</b>
+                </p>
+                <p class="down">
+                  <span>{{data.tdpsname}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="danger" icon-start>
+            删除自选
+          </button>
+          <button ion-button color="primary" icon-start>
+            添加自选
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+</div>
+
+

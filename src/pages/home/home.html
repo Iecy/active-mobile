@@ -1,21 +1,16 @@
 <ion-header>
   <ion-navbar color="primary">
-      <ion-segment [(ngModel)]="tabs" (ionChange)="tabChange($event)" color="light">
-        <ion-segment-button value="one">
-          币种
-        </ion-segment-button>
-        <ion-segment-button value="two">
-          交易所
-        </ion-segment-button>
-        <ion-segment-button value="three">
-          交易对
-        </ion-segment-button>
-      </ion-segment>
-      <!-- <ion-buttons end>
-        <button ion-button icon-only (click)="showSharch()">
-          <ion-icon name="search"></ion-icon>
-        </button>
-      </ion-buttons> -->
+    <ion-segment [(ngModel)]="tabs" (ionChange)="tabChange($event)" color="light">
+      <ion-segment-button value="one">
+        币种
+      </ion-segment-button>
+      <ion-segment-button value="two">
+        交易所
+      </ion-segment-button>
+      <ion-segment-button value="three">
+        交易对
+      </ion-segment-button>
+    </ion-segment>
   </ion-navbar>
 </ion-header>
 <ion-content>
@@ -26,10 +21,14 @@
   ></scroll-bar>
   <div class="tables-box" [ngSwitch]="tabs">
     <div *ngSwitchCase="'one'">
-      <cont-list
+      <!-- <cont-list
         [DataList]="listDataMarket"
         [Theader]="barlist[tabs][barIndex].theader"
-      ></cont-list>
+      ></cont-list> -->
+      <currency-list
+        [DataList]="listDataMarket"
+        [Theader]="barlist[tabs][barIndex].theader"
+      ></currency-list>
     </div>
     <div *ngSwitchCase="'two'">
       <cont-list [DataList]="listDataExchange" [Theader]="barlist[tabs][barIndex].theader"></cont-list>
