@@ -4,15 +4,8 @@
 }
 ion-content{
 	.scroll-content{
-		scroll-bar{
-			height: 44px;
-		}
 		.tables-box{
-			position: absolute;
-			top: 44px;
-			bottom: 0;
-			left: 0;
-			right: 0;
+			flex: 1;
 			overflow-x: hidden;
 			overflow-y: scroll;
 		}
@@ -23,8 +16,9 @@ ion-content{
 ion-content {
 	display: flex;
 	flex-direction: column;
-	scroll-bar {
-		height: 44px;
+	.scroll-content {
+		display: flex;
+		flex-direction: column;
 	}
 
 	.tables-box {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
-import { Api, Commonfn } from '../../providers';
+import { Api, Commonfn, FreeHandleProvider } from '../../providers';
 /**
  * Generated class for the HomePage page.
  *
@@ -27,6 +27,7 @@ export class HomePage implements OnInit {
     public api: Api,
     public fn: Commonfn,
     public loading: LoadingController,
+    public freeHandle: FreeHandleProvider,
   ) {
     this.barlist = {
       one: [{
@@ -152,6 +153,7 @@ export class HomePage implements OnInit {
           item.sdpsname = item.change24 + '%';
           item.tupbname = item.circulatingSupply;
           item.tdpsname = '$' + item.volume;
+          item.freeHandle = this.freeHandle.checkOneItem(item, '全网');
           return item;
         });
         this.listDataMarket = data;
@@ -194,7 +196,8 @@ export class HomePage implements OnInit {
     updataloading.present();
     this.api.HomeExchangeList().subscribe((result: any) => {
       if (result.success) {
-        result.data.forEach(item => {
+        
+        const data = result.data.filter((f, index) => index <= 10).map(item => {
           item.iconImg = this.api.imgmarketUrl + '/' + item.market.toLowerCase().split(' ').join('') + '.png';
           item.isnegative = false;
           item.sdpsname = this.fn.getratio(item.volumerate);
@@ -209,8 +212,9 @@ export class HomePage implements OnInit {
           item.supbname = item.volume24h;
           item.tupbname = item.pairs;
           item.tdpsname = this.gettage(item.extendInfo);
+          return item;
         });
-        this.listDataExchange = result.data;
+        this.listDataExchange = data;
         updataloading.dismiss();
       }
     });

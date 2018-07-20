@@ -54,10 +54,10 @@
           </div>
         </ion-item>
         <ion-item-options>
-          <button ion-button color="danger" icon-start>
+          <button *ngIf="data.freeHandle" ion-button color="danger" icon-start (click)="setFreeHandle(data, '全网', 'add')">
             删除自选
           </button>
-          <button ion-button color="primary" icon-start>
+          <button *ngIf="!data.freeHandle" ion-button color="primary" icon-start (click)="setFreeHandle(data, '全网', 'delete')">
             添加自选
           </button>
         </ion-item-options>
