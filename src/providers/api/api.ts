@@ -59,4 +59,22 @@ export class Api {
   public HomeExchangeList(params?: any) {
     return this.post('exchange_list.do', params);
   }
+  /**
+   * 币详情：获取币详情信息
+   */
+  public currecnyDetailInfo(params?: any) {
+    return this.post('currencies_info.do', params);
+  }
+  /**
+   * 币详情：获取当前币chart数据
+   */
+  public currencyDetailChart(params?: any) {
+    return this.post('currencies_charts.do', params);
+  }
+  /**
+   * 币详情：获取与当前币相关的交易所币对列表
+   */
+  public currecnyDetailRelation(params?: any) {
+    return this.post('currencies_relation_list.do', params);
+  }
 }

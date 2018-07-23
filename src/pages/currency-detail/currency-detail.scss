@@ -1,0 +1,67 @@
+page-currency-detail {
+  .detail-top {
+    flex: 12rem 0 0;
+    .info-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+    .detail-price {
+      color: green;
+      font-size: 1.8rem;
+      margin: 0;
+    }
+  }
+  .detail-charts {
+    flex: 35rem 0 0;
+    .charts-content {
+      height: 30rem;
+    }
+  }
+
+  .detail-relation {
+    flex: 6.5rem 0 0;
+    overflow-y: hidden;
+  }
+  .detail-relation-list {
+    .th {
+      .text {
+        font-size: 1.4rem;
+      }
+    }
+    .text {
+      font-size: 1.2rem;
+      // text-overflow: ellipsis;
+      // overflow: hidden;
+    }
+    .number {
+      text-align: right;
+    }
+  }
+  .info-right {
+    display: flex;
+    flex-direction: row;
+    .item-row {
+      width: 33.33%;
+      .item-row-cor {
+        margin-bottom: 5px;
+        & > span {
+          display: block;
+          font-size: 1.2rem;
+          padding: 3px;
+          &.number {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+ 
+  .col-title {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 1.6rem;
+  }
+
+}

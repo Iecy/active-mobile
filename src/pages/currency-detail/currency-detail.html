@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      <img src="{{detailInfo?.coinImage}}" onerror="this.src='/assets/images/icon-c1.png';" alt="{{detailInfo?.name}}">
+      <span *ngIf="detailInfo?.name">{{detailInfo?.name}}({{detailInfo?.coin}})</span>
+      <span *ngIf="!detailInfo?.name">{{detailInfo?.coin}}</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="detail-top">
+    <ion-row>
+      <ion-col col-3 col-sm-5 col-lg-3 col-xl-3>
+        <div class="info-left">
+          <p class="detail-price">{{detailInfo?.price || '--'}}</p>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div class="info-right">
+          <div class="item-row">
+            <div class="item-row-cor">
+              <span class="name">最高(24H)</span>
+              <span class="number">{{detailInfo?.max_price || '--'}}</span>
+            </div>
+            <div class="item-row-cor">
+              <span class="name">最低(24H)</span>
+              <span class="number">{{detailInfo?.min_price || '--'}}</span>
+            </div>
+          </div>
+          <div class="item-row">
+            <div class="item-row-cor">
+              <span class="name">成交额(24H)</span>
+              <span class="number">{{detailInfo?.marketCap || '--'}}</span>
+            </div>
+            <div class="item-row-cor">
+              <span class="name">成交量(24H)</span>
+              <span class="number">{{detailInfo?.volume || '--'}}</span>
+            </div>
+          </div>
+          <div class="item-row">
+            <div class="item-row-cor">
+              <span class="name">流通市值</span>
+              <span class="number">{{detailInfo?.circulatingSupply || '--'}}</span>
+            </div>
+            <div class="item-row-cor">
+              <span class="name">总发行量</span>
+              <span class="number">{{detailInfo?.a_json?.TotalCirculation || '--'}}</span>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="detail-charts">
+    <ion-row>
+      <ion-col col-12>
+        <p class="col-title">{{detailInfo?.name || detailInfo?.coin}}价格走势图</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <div class="charts-content" [chart]="chartOption"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="detail-relation">
+    <ion-row>
+      <ion-col col-12>
+        <p class="col-title">{{detailInfo?.name || detailInfo?.coin}}交易所行情（成交额TOP10）</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="th">
+      <ion-col class="text" col-1>#</ion-col>
+      <ion-col class="text" col-2>交易所</ion-col>
+      <ion-col class="text" col-3>交易对</ion-col>
+      <ion-col class="text" col-2>价格</ion-col>
+      <ion-col class="text" col-3>成交额</ion-col>
+      <ion-col class="text" col-1>占比</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list class="detail-relation-list">
+    <ion-item-sliding *ngFor="let data of releation; let i = index;">
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="text" col-1>{{i + 1}}</ion-col>
+            <ion-col class="text" col-2>{{data.market}}</ion-col>
+            <ion-col class="text" col-3>{{data.pair}}</ion-col>
+            <ion-col class="text number" col-2>{{data.price}}</ion-col>
+            <ion-col class="text number" col-3>{{data.volume}}</ion-col>
+            <ion-col class="text number" col-1>{{data.volumeRatio}}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start>
+          删除自选
+        </button>
+        <button ion-button color="primary" icon-start>
+          添加自选
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

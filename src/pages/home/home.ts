@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
 import { Api, Commonfn, FreeHandleProvider } from '../../providers';
+
 /**
  * Generated class for the HomePage page.
  *
@@ -136,7 +137,6 @@ export class HomePage implements OnInit {
     });
     updataloading.present();
     this.api.HomeMarketList().subscribe((result: any) => {
-      console.log(result);
       if (result.success) {
         const data = result.data.filter((f, index) => index <= 10).map(item => {
           item.iconImg = this.api.imgiconUrl + '/' + item.coin.toLowerCase().split(' ').join('') + '.png';
@@ -235,6 +235,18 @@ export class HomePage implements OnInit {
       break;
       case '交易所列表':
         this.getlistExchange();
+      break;
+    }
+  }
+  /**
+   * 页面跳转
+   * @param type 类型,哪个页面跳转
+   * @param data 子页面传参
+   */
+  public onNavPage(type: string, data: any): void {
+    switch (type) {
+      case 'detail':
+      this.navCtrl.push('CurrencyDetailPage', data);
       break;
     }
   }

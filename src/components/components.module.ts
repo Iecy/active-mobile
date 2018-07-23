@@ -12,7 +12,7 @@ import { CurrencyListComponent } from './currency-list/currency-list';
 		ContListComponent,
 		NewsListComponent,
 		InformationListComponent,
-    CurrencyListComponent
+    CurrencyListComponent,
 	],
 	imports: [
 		IonicModule
@@ -24,7 +24,7 @@ import { CurrencyListComponent } from './currency-list/currency-list';
 		ContListComponent,
 		NewsListComponent,
 		InformationListComponent,
-    CurrencyListComponent
+    CurrencyListComponent,
 	]
 })
 export class ComponentsModule {}

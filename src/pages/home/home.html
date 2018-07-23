@@ -28,6 +28,7 @@
       <currency-list
         [DataList]="listDataMarket"
         [Theader]="barlist[tabs][barIndex].theader"
+        (navPage)="onNavPage('detail', {id: $event})"
       ></currency-list>
     </div>
     <div *ngSwitchCase="'two'">
