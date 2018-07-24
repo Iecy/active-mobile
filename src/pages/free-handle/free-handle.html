@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-segment [(ngModel)]="currentSegment" (ionChange)="tabChange($event)" color="light">
+      <ion-segment-button *ngFor="let item of segments" value="{{item.value}}">
+        {{item.label}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="currentSegment">
+    <div *ngSwitchCase="'currency'">
+      currency
+    </div>
+    <div *ngSwitchCase="'pair'">
+      pair
+    </div>
+  </div>
+</ion-content>

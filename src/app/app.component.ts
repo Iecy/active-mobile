@@ -7,7 +7,7 @@ import { Config, Nav, Platform } from 'ionic-angular';
 import { MainPage } from '../pages';
 import { Settings } from '../providers';
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 export class MyApp implements OnInit {
   rootPage: any = MainPage;

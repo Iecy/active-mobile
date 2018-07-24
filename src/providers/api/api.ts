@@ -48,14 +48,24 @@ export class Api {
   }
 
   // 具体接口
-  // 首页币种行情列表
+  /**
+   * 首页币种行情列表
+   * @param params
+   */
   HomeMarketList(params?: any) {
     return this.post('currencies_list.do', params);
   }
+  /**
+   * 首页币种行情列表svg图
+   * @param params
+   */
+  public HomeCurrencyCharts(params?: any) {
+    return this.post('currencies_charts_1d.do', params);
+  }
 
-/**
- * HomeExchangeList 获取交易所行情接口
- */
+  /**
+  * HomeExchangeList 获取交易所行情接口
+  */
   public HomeExchangeList(params?: any) {
     return this.post('exchange_list.do', params);
   }

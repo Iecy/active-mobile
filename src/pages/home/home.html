@@ -1,6 +1,9 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-segment [(ngModel)]="tabs" (ionChange)="tabChange($event)" color="light">
+      <ion-segment-button (click)="onNavPage('freeHandle')">
+        自选
+      </ion-segment-button>
       <ion-segment-button value="one">
         币种
       </ion-segment-button>
@@ -15,27 +18,27 @@
 </ion-header>
 <ion-content>
   <scroll-bar
+    *ngIf="tabs === 'zero'"
     [list]="barlist[tabs]"
     (addClick)="BarAdd()"
     (itemChange)="BarChange($event)"
   ></scroll-bar>
   <div class="tables-box" [ngSwitch]="tabs">
+    
     <div *ngSwitchCase="'one'">
-      <!-- <cont-list
-        [DataList]="listDataMarket"
-        [Theader]="barlist[tabs][barIndex].theader"
-      ></cont-list> -->
       <currency-list
         [DataList]="listDataMarket"
         [Theader]="barlist[tabs][barIndex].theader"
-        (navPage)="onNavPage('detail', {id: $event})"
+        (navPage)="onNavPage('currency', {id: $event})"
       ></currency-list>
     </div>
     <div *ngSwitchCase="'two'">
-      <cont-list [DataList]="listDataExchange" [Theader]="barlist[tabs][barIndex].theader"></cont-list>
+      <!-- <cont-list [DataList]="listDataExchange" [Theader]="barlist[tabs][barIndex].theader"></cont-list> -->
+      <exchange-list (navPage)="onNavPage('exchange', {id: $event})"></exchange-list>
     </div>
     <div *ngSwitchCase="'three'">
-      <cont-list [DataList]="listDataTrading" [Theader]="barlist[tabs][barIndex].theader"></cont-list>
+      <!-- <cont-list [DataList]="listDataTrading" [Theader]="barlist[tabs][barIndex].theader"></cont-list> -->
+      <pair-list (navPage)="onNavPage('pair', {id: $event})"></pair-list>
     </div>
   </div>
 </ion-content>

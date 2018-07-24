@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
-import { Api, Commonfn, FreeHandleProvider } from '../../providers';
+import { Api, Commonfn, FreeHandleProvider, ModalProvider } from '../../providers';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -29,8 +23,14 @@ export class HomePage implements OnInit {
     public fn: Commonfn,
     public loading: LoadingController,
     public freeHandle: FreeHandleProvider,
+    public modal: ModalProvider,
   ) {
     this.barlist = {
+      zero: [{
+        name: '币种',
+      }, {
+        name: '交易对'
+      }],
       one: [{
         name: '行情',
         theader: [
@@ -147,17 +147,26 @@ export class HomePage implements OnInit {
             }
           }
           item.name = item.name;
-          item.fupbname = item.symbol;
-          item.fdpdname = '$' + item.marketCap;
-          item.supbname = '$' + item.price;
-          item.sdpsname = item.change24 + '%';
-          item.tupbname = item.circulatingSupply;
-          item.tdpsname = '$' + item.volume;
+          item.rate = item.change24;
+          item.circulat = item.circulatingSupply; // 流通
           item.freeHandle = this.freeHandle.checkOneItem(item, '全网');
           return item;
         });
         this.listDataMarket = data;
         updataloading.dismiss();
+      }
+    });
+
+    this.api.HomeCurrencyCharts().subscribe((result: any) => {
+      if (result.errorNo === 0) {
+        this.listDataMarket.map(item => {
+          const name = item.coin.toLowerCase().replace(' ', '-');
+          item.svg = this.filterDataSvg(result.data[name])
+          // console.log(item, 'this is ......', result.data);
+        });
+        // this.listDataMarket = data;
+      } else {
+        this.modal.alert('错误', result.errorNo + ': 获取币chart图数据失败！');
       }
     });
   }
@@ -238,15 +247,56 @@ export class HomePage implements OnInit {
       break;
     }
   }
+
+  public filterDataSvg(data: any) {
+    data = data ? data.map(item => [item.dateV, item.marketCap]) : [];
+    const temp_test = [];
+    const sort_item0 = [];
+    const sort_item1 = [];
+    const temp = {
+      bg: null,
+      sm: null,
+    };
+    data.forEach(item => {
+      sort_item0.push(item[0]);
+      sort_item1.push(item[1]);
+    });
+    data.forEach(item => {
+      const bg = item[0] / 1000 - sort_item0.sort()[0] / 1000;
+      const sm = item[1] * 100 - sort_item1.sort()[1] * 100;
+      temp.bg += bg;
+      temp.sm += sm;
+      temp_test.push([bg, sm ]);
+    });
+    temp.bg = temp.bg / data.length;
+    temp.sm = temp.sm / data.length;
+    const temp_2 = [];
+    temp_test.forEach(item => {
+      const bg = (item[0] / temp.bg * 10 + 2) * 3.5;
+      const sm = (item[1] / temp.sm * 10 + 2) * 1.2;
+      temp_2.push([bg, sm]);
+    });
+    return temp_2;
+  }
   /**
    * 页面跳转
    * @param type 类型,哪个页面跳转
    * @param data 子页面传参
    */
   public onNavPage(type: string, data: any): void {
+    console.log(type, 'openNavDetailsPage');
     switch (type) {
-      case 'detail':
+      case 'currency':
       this.navCtrl.push('CurrencyDetailPage', data);
+      break;
+      case 'exchange':
+      this.navCtrl.push('ExchangeDetailPage', data);
+      break;
+      case 'pair':
+      this.navCtrl.push('PairDetailPage', data);
+      break;
+      case 'freeHandle':
+      this.navCtrl.push('FreeHandlePage');
       break;
     }
   }

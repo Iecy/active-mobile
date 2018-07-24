@@ -1,57 +1,48 @@
-<!-- Generated template for the CurrencyListComponent component -->
 <div class="list-box">
-  <div class="table-header list-row">
-    <div class="th-header td" *ngFor="let titem of Theader;">
-      <span>{{titem.name}}</span>
-    </div>
-  </div>
-  <div *ngIf="!DataList.length" class="nodata">
-    <p>暂无数据</p>
-  </div>
-  <div class="table-content">
-    <ion-list class="table-conent">
+  <ion-list class="header">
+    <ion-item-sliding>
+      <ion-item>
+        <ion-row>
+          <ion-col col-1 class="text-center th">
+            <i class="iconfont icon-sorting"></i>
+          </ion-col>
+          <ion-col class="th" col-4>币种</ion-col>
+          <ion-col class="th" col-3>当前价/涨幅</ion-col>
+          <ion-col class="th" col-4>7D趋势图</ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <div class="content">
+    <ion-list>
       <ion-item-sliding *ngFor="let data of DataList; let i = index;">
-        <ion-item>
-          <div class="list-row">
-            <div class="td">
-              <div class="icon">
-                <p class="up">
-                  <img [src]="data.iconImg" onerror="this.src='/assets/images/icon-c1.png';" [alt]="data.name">
-                </p>
-                <p class="down">
-                  <span>{{i}}</span>
-                </p>
+        <ion-item (click)="openNavDetailsPage(data.coin)">
+          <ion-row>
+            <ion-col col-1 class="con-item con-number">
+              <img [src]="data.iconImg" onerror="this.src='/assets/images/icon-c1.png';" [alt]="data.name">
+              <span class="index">{{i + 1}}</span>
+            </ion-col>
+            <ion-col col-4 class="con-item con-title">
+              <h4 class="name"><b>{{data.symbol}}</b>{{data.name}}</h4>
+              <div class="text">
+                <label>市值</label>
+                <span>{{data.marketCap}}</span>
               </div>
-              <div class="title" (click)="openNavDetailsPage(data.coin)">
-                <p class="up">
-                  <b>{{data.fupbname}}</b><span>{{data.name}}</span>
-                </p>
-                <p class="down">
-                  <span>{{data.fdpdname}}</span>
-                </p>
+              <div class="text">
+                <label>成交额</label>
+                <span>{{data.volume}}</span>
               </div>
-            </div>
-            <div class="td">
-              <div class="title">
-                <p class="up">
-                  <b [class]="data.isnegative ? 'color-red' : 'color-green'">{{data.supbname}}</b>
-                </p>
-                <p class="down">
-                  <span>{{data.sdpsname}}</span>
-                </p>
+            </ion-col>
+            <ion-col col-3 class="con-item con-price">
+              <div class="price">{{data.price}}</div>
+              <div class="rate">
+                <span [class.rise]="data.rate >= 0" [class.drop]="data.rate < 0">{{data.rate}}%</span>
               </div>
-            </div>
-            <div class="td">
-              <div class="title">
-                <p class="up">
-                  <b class="color-green">{{data.tupbname}}</b>
-                </p>
-                <p class="down">
-                  <span>{{data.tdpsname}}</span>
-                </p>
-              </div>
-            </div>
-          </div>
+            </ion-col>
+            <ion-col col-4>
+              <div peity>7D趋势图</div>
+            </ion-col>
+          </ion-row>
         </ion-item>
         <ion-item-options>
           <button *ngIf="data.freeHandle" ion-button color="danger" icon-start (click)="setFreeHandle(data, '全网', 'add')">
@@ -65,5 +56,3 @@
     </ion-list>
   </div>
 </div>
-
-

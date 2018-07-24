@@ -1,16 +1,36 @@
-// http://ionicframework.com/docs/v2/theming/
-
-
 // App Global Sass
+.rise-color {
+  color: green;
+}
+.drop-color {
+  color: red;
+}
+
+// text algin
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
 // --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
+@font-face {font-family: "iconfont";
+  src: url('/assets/fonts/iconfont.eot?t=1532336611193'); /* IE9*/
+  src: url('/assets/fonts/iconfont.eot?t=1532336611193#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('/assets/fonts/data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAATwAAsAAAAAB0AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7ktgY21hcAAAAYAAAABdAAABhqcQBr5nbHlmAAAB4AAAASMAAAEoU7A7x2hlYWQAAAMEAAAALwAAADYSFrmwaGhlYQAAAzQAAAAcAAAAJAfeA4RobXR4AAADUAAAAAwAAAAMC+kAAGxvY2EAAANcAAAACAAAAAgAdgCUbWF4cAAAA2QAAAAfAAAAIAESAF1uYW1lAAADhAAAAUUAAAJtPlT+fXBvc3QAAATMAAAAJAAAADXd8VOBeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/sE4gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVLwsY27438AQw9zA0AAUZgTJAQAsWgzleJzFkMENgDAMAy9t6QMxCA8G4sUYVVfuFMWE8mCCWnKsOJYSBViAKB5iArswHpxyzf3I6n7yTJYagdpK7+o/VUSz7BpUMtNg81b/sXndR6evUAd1YisvCTeGsg1zAAAAeJwNj71OwlAYQL/vXnvbIm3t7c9tC6WUCleDklgqDkZYWDQOJgYTRx9AVxYTu5g4OPgMxsTBkZXX0N3oa4D25ExnO6AA/H3TJQ3AgR04gClcACDrY8ckMaayGJA+eqniCdekMpOpmnUG9ARFh7l+Pip6gqnMQhNbOEzzkRwQiYfFmBxj7seIYSO65N0mpy9YC2TrcX1GXtFLsqY13l+f7k3cvO1o8zrnIefPGlMUjZANy8Rb4euKXmPrN8WKvGWySxKshzI6vzbaDX7zVNzFXaEjliU6jbb5PrEju/I+8h0eqluGFkRGtu3i/HczcOpx7wcqSPX6SXXyBQyM6lKo0s5sKo+EPbTJbDEsZx+L4mFGykVRrpYUVldVI9MVwD+3mDLkAHicY2BkYGAA4osT2wLj+W2+MnCzMIDA9epdjxH0/6ssDMwSQC4HAxNIFABUnQvFAHicY2BkYGBu+N/AEMPCAAJAkpEBFTADAEcJAmwEAAAAA+kAAAQAAAAAAAAAAHYAlHicY2BkYGBgZghkYGUAASYg5gJCBob/YD4DABD3AXAAeJxlj01OwzAQhV/6B6QSqqhgh+QFYgEo/RGrblhUavdddN+mTpsqiSPHrdQDcB6OwAk4AtyAO/BIJ5s2lsffvHljTwDc4Acejt8t95E9XDI7cg0XuBeuU38QbpBfhJto41W4Rf1N2MczpsJtdGF5g9e4YvaEd2EPHXwI13CNT+E69S/hBvlbuIk7/Aq30PHqwj7mXle4jUcv9sdWL5xeqeVBxaHJIpM5v4KZXu+Sha3S6pxrW8QmU4OgX0lTnWlb3VPs10PnIhVZk6oJqzpJjMqt2erQBRvn8lGvF4kehCblWGP+tsYCjnEFhSUOjDFCGGSIyujoO1Vm9K+xQ8Jee1Y9zed0WxTU/3OFAQL0z1xTurLSeTpPgT1fG1J1dCtuy56UNJFezUkSskJe1rZUQuoBNmVXjhF6XNGJPyhnSP8ACVpuyAAAAHicY2BigAAuBuyAmZGJkZmRhYGxgr04v6gkMy+dgQEAGx0Dog==') format('woff'),
+  url('/assets/fonts/iconfont.ttf?t=1532336611193') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('/assets/fonts/iconfont.svg?t=1532336611193#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sorting:before { content: "\e976"; }

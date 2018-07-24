@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-// import { ModalProvider, FreeHandleProvider } from '@providers';
 import { ModalProvider } from '../../providers';
-// import { CurrencyDetailComponent } from '../currency-detail/currency-detail';
 
 @Component({
   selector: 'currency-list',
@@ -12,16 +10,21 @@ export class CurrencyListComponent implements OnInit {
   @Input() DataList: Array<any>;
   @Input() Theader: Array<any>;
   @Output() public navPage = new EventEmitter<any>();
+
+  public peity: any;
   constructor(
     private modalProvider: ModalProvider,
-    // private freeHand: FreeHandleProvider,
   ) {
+    this.peity = {
+      type: 'line',
+      data: [5, 3, 9, 6, 5, 9, 7, 3, 5, 2, 5, 3, 9, 6, 5, 9, 7, 3, 5, 2],
+    };
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   public setFreeHandle(data: any, type: string = '全网', setting: string): void {
-    console.log(data, 'this is data');
     this.modalProvider.alert('错误', '删除自选失败');
   }
   /**

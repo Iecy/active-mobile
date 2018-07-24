@@ -127,7 +127,7 @@ export class CurrencyDetailPage implements OnInit {
             color: Highcharts.getOptions().colors[0]
           }
         },
-        visible: false,
+        // visible: false,
       }, {
         opposite: false,
         height: '20%',
@@ -137,7 +137,7 @@ export class CurrencyDetailPage implements OnInit {
         title: {
           text: '24小时交易量',
         },
-        visible: false,
+        // visible: false,
       }, {
         title: {
           text: '价格（美元）',
@@ -152,7 +152,7 @@ export class CurrencyDetailPage implements OnInit {
         },
         height: '80%',
         offset: 0,
-        visible: false,
+        // visible: false,
       }];
       if ((<string>this.id).toLowerCase() !== 'bitcoin') {
         y.push({
@@ -169,7 +169,7 @@ export class CurrencyDetailPage implements OnInit {
           },
           height: '80%',
           offset: 0,
-          visible: false,
+          // visible: false,
         });
       }
       return y;
